@@ -1,0 +1,13 @@
+brk-pri> show ssl allow-tls-version
+
+Allowed TLS versions: 1.2
+
+brk-pri> show authentication access-level default
+
+Access-Level Configuration:
+  Default:
+    Global Access Level: none
+
+brk-pri# show log system lines 100
+2026-09-07T15:10:01+08:00 <local3.info> brk-pri event: SYSTEM: SYSTEM_CLIENT_CONNECT: - - Client (12) app-pub connected
+2026-09-07T15:11:42+08:00 <local3.warning> brk-pri event: SYSTEM: SYSTEM_AD_MSG_SPOOL_HIGH: - - Spool usage high

@@ -1,0 +1,8 @@
+# Generated or duplicate artefacts: the bundle mirrors src/, legacy is the old implementation.
+app.js
+legacy/
+dist/
+scripts/logs/
+node_modules/
+# Sample CLI dumps are data, not knowledge.
+test/fixtures/

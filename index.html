@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solace Ops Readiness Checklist</title>
+    <meta name="description" content="Builds the Solace Ops Readiness Checklist from gather-diagnostics bundles, CLI transcripts and current-config exports.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="appbar">
+      <div class="appbar-inner">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M9 16h14M16 9l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <p class="overline">Solace Professional Services</p>
+            <h1>Ops Readiness Checklist</h1>
+          </div>
+        </div>
+        <p class="appbar-tagline">Drop gather-diagnostics bundles for every broker in the HA group. Verdicts, evidence and the Excel checklist are produced locally in your browser.</p>
+      </div>
+    </header>
+
+    <main id="app" class="shell">
+      <aside class="sidebar">
+        <section class="card">
+          <h2>Add a broker</h2>
+          <p class="card-help">One broker at a time: its <code>cli-diagnostics.txt</code> from gather-diagnostics, plus the current-config export if you have it.</p>
+
+          <div class="picker">
+            <div class="picker-label">cli-diagnostics.txt <span class="tag required">required</span></div>
+            <div class="picker-row">
+              <label class="button small">Choose file<input id="diagPick" type="file" accept=".txt,.log,text/plain" hidden></label>
+              <span id="diagName" class="picked empty">No file selected</span>
+            </div>
+          </div>
+
+          <div class="picker">
+            <div class="picker-label">current-config export <span class="tag optional">optional</span></div>
+            <div class="picker-row">
+              <label class="button small">Choose file<input id="configPick" type="file" accept=".cli,.txt,.cfg,.conf,text/plain" hidden></label>
+              <span id="configName" class="picked empty">No file selected</span>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>Hostname</span>
+            <input id="hostnameInput" type="text" placeholder="detected from cli-diagnostics.txt" autocomplete="off">
+          </label>
+
+          <button id="addBrokerButton" type="button" class="button primary wide" disabled>Add broker</button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </section>
+
+        <section class="card">
+          <h2>Bulk import</h2>
+          <div id="dropzone" class="dropzone compact" tabindex="0" role="group" aria-label="Drop files or folders">
+            <p class="dropzone-title">Drop gather-diagnostics folders here</p>
+            <p class="dropzone-help">Several brokers at once. Files are sorted into brokers by the hostname inside them; CLI transcripts for the supplemental commands are accepted too.</p>
+            <div class="dropzone-actions">
+              <label class="button small">Add files<input id="fileInput" type="file" multiple hidden></label>
+              <label class="button small">Add folder<input id="folderInput" type="file" webkitdirectory directory multiple hidden></label>
+            </div>
+          </div>
+          <input id="slotInput" type="file" multiple hidden>
+          <details id="ignoredFiles" class="ignored" hidden></details>
+        </section>
+
+        <section class="card">
+          <h2>Design targets</h2>
+          <p class="card-help">Optional. When set, the matching checks become Pass/Fail instead of Info.</p>
+          <label class="field">
+            <span>SolOS version</span>
+            <input id="targetVersion" type="text" placeholder="e.g. 10.25.0.148" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Connection scaling tier</span>
+            <input id="targetConnections" type="text" inputmode="numeric" placeholder="e.g. 1000" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Max spool usage (MB)</span>
+            <input id="targetSpool" type="text" inputmode="numeric" placeholder="e.g. 75000" autocomplete="off">
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>Export</h2>
+          <div class="stack">
+            <button id="downloadButton" type="button" class="button primary" disabled>Download checklist (.xlsx)</button>
+            <button id="downloadScriptButton" type="button" class="button">Supplemental commands (.txt)</button>
+            <button id="clearButton" type="button" class="button ghost" disabled>Clear everything</button>
+          </div>
+          <p class="card-help">The supplemental command list covers checks that gather-diagnostics does not capture. Run it on each broker and drop the transcript here.</p>
+        </section>
+      </aside>
+
+      <section class="content">
+        <div id="emptyState" class="empty-state">
+          <h2>No brokers yet</h2>
+          <p>Drop the <code>gather-diagnostics_*</code> folders for the primary, backup and monitor nodes. Each broker becomes a card and a column in the checklist.</p>
+        </div>
+
+        <div id="brokerGrid" class="broker-grid" hidden></div>
+
+        <section id="unassigned" class="card unassigned" hidden>
+          <h2>Files without a detected hostname</h2>
+          <p class="card-help">Pick the broker each file belongs to, or create a new broker.</p>
+          <div id="unassignedList"></div>
+        </section>
+
+        <section class="card results">
+          <div class="results-head">
+            <div id="summaryStrip" class="summary-strip"></div>
+            <div class="results-tools">
+              <div id="filters" class="filters">
+                <button type="button" class="chip-button active" data-filter="all">All checks</button>
+                <button type="button" class="chip-button" data-filter="attention">Needs attention</button>
+              </div>
+              <input id="search" type="search" placeholder="Search checks and output" aria-label="Search checks">
+              <span id="tableMeta" class="table-meta"></span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="checklist">
+              <thead id="tableHead"></thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- app.js is generated from src/ by scripts/build.mjs; it is a classic script so the page works from file:// -->
+    <script src="./app.js"></script>
+  </body>
+</html>

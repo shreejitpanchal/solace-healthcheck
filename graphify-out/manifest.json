@@ -1,0 +1,137 @@
+{
+  "package.json": {
+    "mtime": 1790061812.968685,
+    "ast_hash": "55ec80df6cbac0f5e6008331c5f91633",
+    "semantic_hash": "55ec80df6cbac0f5e6008331c5f91633"
+  },
+  "scripts/build.mjs": {
+    "mtime": 1790061752.2669957,
+    "ast_hash": "a12fdd5437b78771be068839eac883bc",
+    "semantic_hash": "a12fdd5437b78771be068839eac883bc"
+  },
+  "scripts/dev.ps1": {
+    "mtime": 1790061812.9676335,
+    "ast_hash": "987a62e7a97ccfefe35888c796e38a67",
+    "semantic_hash": "987a62e7a97ccfefe35888c796e38a67"
+  },
+  "scripts/dev.sh": {
+    "mtime": 1790061812.9655142,
+    "ast_hash": "c3f1fa8850719000b540b6a0527d239f",
+    "semantic_hash": "c3f1fa8850719000b540b6a0527d239f"
+  },
+  "scripts/lint.mjs": {
+    "mtime": 1790061812.9702177,
+    "ast_hash": "23fc8deb9abfe07c95fc66b894e787de",
+    "semantic_hash": "23fc8deb9abfe07c95fc66b894e787de"
+  },
+  "scripts/serve.mjs": {
+    "mtime": 1790060672.6189158,
+    "ast_hash": "7e250c2631edda623b01cf55da80e337",
+    "semantic_hash": "7e250c2631edda623b01cf55da80e337"
+  },
+  "src/analyzers.js": {
+    "mtime": 1790060967.1709206,
+    "ast_hash": "28b720da13d5815b41d9adbaefc01bf5",
+    "semantic_hash": "28b720da13d5815b41d9adbaefc01bf5"
+  },
+  "src/broker.js": {
+    "mtime": 1790059658.4399018,
+    "ast_hash": "9729b4533154107251eb060e384f9ad7",
+    "semantic_hash": "9729b4533154107251eb060e384f9ad7"
+  },
+  "src/checklist.js": {
+    "mtime": 1790060056.719409,
+    "ast_hash": "8e2ec769d4cc72b598b52e4e375544fc",
+    "semantic_hash": "8e2ec769d4cc72b598b52e4e375544fc"
+  },
+  "src/checks.js": {
+    "mtime": 1790059456.469446,
+    "ast_hash": "c7d97d892f34630459f917db4ae23b8a",
+    "semantic_hash": "c7d97d892f34630459f917db4ae23b8a"
+  },
+  "src/config-parser.js": {
+    "mtime": 1790059619.545686,
+    "ast_hash": "8a0b9f86f7123b308b34827f5db5792e",
+    "semantic_hash": "8a0b9f86f7123b308b34827f5db5792e"
+  },
+  "src/main.js": {
+    "mtime": 1790060299.499339,
+    "ast_hash": "565e07982a424bafebab676d7177151b",
+    "semantic_hash": "565e07982a424bafebab676d7177151b"
+  },
+  "src/report.js": {
+    "mtime": 1790060992.6017435,
+    "ast_hash": "73ab884ea83fbc0582780be5e607f710",
+    "semantic_hash": "73ab884ea83fbc0582780be5e607f710"
+  },
+  "src/sections.js": {
+    "mtime": 1790060962.4402857,
+    "ast_hash": "c20d48fe2f267989384652a238e82cc9",
+    "semantic_hash": "c20d48fe2f267989384652a238e82cc9"
+  },
+  "src/ui.js": {
+    "mtime": 1790062259.0185905,
+    "ast_hash": "9dd3fbafdcb3efcd12d3cdc37b751ab8",
+    "semantic_hash": "9dd3fbafdcb3efcd12d3cdc37b751ab8"
+  },
+  "src/xlsx.js": {
+    "mtime": 1790060121.1287315,
+    "ast_hash": "af2ee7fda8feb692a036c74b25ee0061",
+    "semantic_hash": "af2ee7fda8feb692a036c74b25ee0061"
+  },
+  "test/analyzers.test.js": {
+    "mtime": 1790060635.4809065,
+    "ast_hash": "967e01095a69ac972b7a4f47ed218297",
+    "semantic_hash": "967e01095a69ac972b7a4f47ed218297"
+  },
+  "test/broker.test.js": {
+    "mtime": 1790060594.4164658,
+    "ast_hash": "37a3e730b38da56ae9ece47a68027642",
+    "semantic_hash": "37a3e730b38da56ae9ece47a68027642"
+  },
+  "test/config-parser.test.js": {
+    "mtime": 1790060576.4014297,
+    "ast_hash": "9c20bfff3c34a43a36fb9bb8ccfb70bd",
+    "semantic_hash": "9c20bfff3c34a43a36fb9bb8ccfb70bd"
+  },
+  "test/sections.test.js": {
+    "mtime": 1790060563.2325685,
+    "ast_hash": "57e761bad7025374129e3a5fe5e031db",
+    "semantic_hash": "57e761bad7025374129e3a5fe5e031db"
+  },
+  "test/xlsx.test.js": {
+    "mtime": 1790060974.116622,
+    "ast_hash": "6075953914678d89138ffc11994c2167",
+    "semantic_hash": "6075953914678d89138ffc11994c2167"
+  },
+  "CLAUDE.md": {
+    "mtime": 1790066344.956963,
+    "ast_hash": "990c26d3f5a1783dfdf7899ffbd43026",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1790066344.956963,
+    "ast_hash": "3c4361e9d1b2e86760519d5e6eb3c841",
+    "semantic_hash": ""
+  },
+  "docs/architecture.md": {
+    "mtime": 1790066344.956963,
+    "ast_hash": "69d8bfbe91f297b1a59f75996a9931ee",
+    "semantic_hash": ""
+  },
+  "docs/developer-guide.md": {
+    "mtime": 1790066351.7478876,
+    "ast_hash": "6c7d52aa97a78a10988b14fb03ddcd80",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1790062226.5336015,
+    "ast_hash": "eb10937f7aad34d36f58cf4b9b416b25",
+    "semantic_hash": "eb10937f7aad34d36f58cf4b9b416b25"
+  },
+  "run-healthcheck.sh": {
+    "mtime": 1790066344.956963,
+    "ast_hash": "81771084414e64f1042f0b145d0f9a7c",
+    "semantic_hash": ""
+  }
+}

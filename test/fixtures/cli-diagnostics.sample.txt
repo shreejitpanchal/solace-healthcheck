@@ -1,0 +1,688 @@
+#################################################################
+# CLI command: show hostname
+# Host:        brk-pri
+#################################################################
+
+Hostname: brk-pri
+Deferred hostname: brk-pri
+
+#################################################################
+# CLI command: show version
+# Host:        brk-pri
+#################################################################
+
+
+Solace PubSub+ Enterprise Version 10.25.0.148
+
+Process         Release              Build date
+--------------- -------------------- ------------------------
+CLI             10.25.0.148          Dec  5 2025 10:27:16 +08
+
+Current load is: soltr_10.25.0.148
+
+Backout load does not exist
+
+System uptime: 60d 0h 6m 39s
+
+
+#################################################################
+# CLI command: show router-name
+# Host:        brk-pri
+#################################################################
+
+
+Router Name:          brk-pri
+Mirroring Hostname:   Yes
+
+Deferred Router Name: brk-pri
+Mirroring Hostname:   Yes
+
+Unique Id:            99:8a:18:d7:5c:6b:0f:9a
+
+
+#################################################################
+# CLI command: show hardware detail
+# Host:        brk-pri
+#################################################################
+
+Platform:          Solace PubSub+ Enterprise
+Hypervisor:        VMware, Inc. - VMware7,1
+System Memory:     16.0 GiB
+System Type:                    topic-routing
+
+
+#################################################################
+# CLI command: show system post
+# Host:        brk-pri
+#################################################################
+
+
+Overall Power-On Self Test (POST) Status: FAILED
+
+Platform: Solace PubSub+ Enterprise
+    POST Status:    FAILED
+       024 [NON-CRITICAL] PubSub+ENT-1K is licensed to run on a maximum of 2 cores, the current system has 8 cores available
+
+
+#################################################################
+# CLI command: show system detail
+# Host:        brk-pri
+#################################################################
+
+
+System Uptime: 60d 0h 6m 39s
+Last Restart Reason: None
+
+Scaling:
+   Max Bridges: 25
+   Max Connections: 1000
+   Max Queue Messages: 240M
+   Max Subscriptions: 500000
+
+Topic Routing:
+   Subscription Exceptions: Enabled
+
+System Resources for Container
+
+System Resource                   Available    Required     Units
+--------------------------------- ------------ ------------ ----------
+CPU
+  Cores                           8            2
+Memory
+  Host Virtual Memory             19.4         6.4          GiB
+  Memory Cgroup Limit             19.4         5.5          GiB
+  Shared Memory                   1.0          1.0          GiB
+Storage Devices
+  /dev/dm-9                       97.9 Mi      7.1 Mi       1K-Blocks
+    contains: spool
+  overlay                         39.4 Mi      1.4 Mi       1K-Blocks
+    contains: root
+
+
+#################################################################
+# CLI command: show system health
+# Host:        brk-pri
+#################################################################
+
+
+Statistics since:  Jul 09 2026 15:12:45 +08
+
+                   Units   Min      Max      Avg      Curr     Thresh    Events
+                   ------  -------  -------  -------  -------  --------  -------
+Disk Latency       us      91       795650   244      176      10000000  0
+Compute Latency    us      900      143721   1061     1014     500000    0
+Network Latency    us      123      222161   452      363      2000000   0
+Mate-Link Latency  us      128      222206   470      386      2000000   0
+
+
+#################################################################
+# CLI command: show ip vrf management
+# Host:        brk-pri
+#################################################################
+
+VRF: management
+Number of interfaces: 1
+
+Interface       V Router  IP Address          Source
+--------------  --------  ------------------  ------
+intf0:1         static    10.10.10.11/28      system
+intf0:1         static    ::/0                system
+
+
+Number of active global routes: 3
+
+Destination                  Gateway           Network Mask                Interface
+---------------------------  ----------------  --------------------------  ----------
+default                      10.10.10.1        0.0.0.0                     intf0
+10.10.10.0                   *                 255.255.255.240             intf0
+fe80::                       *                 ffff:ffff:ffff:ffff::       intf0
+
+
+#################################################################
+# CLI command: show redundancy detail
+# Host:        brk-pri
+#################################################################
+
+Configuration Status     : Enabled
+Redundancy Status        : Up
+  Last Failure Reason    : Mate is reconciling for primary VR
+  Last Failure Time      : Jul  9 2026 15:13:05 +08
+Operating Mode           : Message Routing Node
+Switchover Mechanism     : Hostlist
+Auto Revert              : No
+Redundancy Mode          : Active/Standby
+Active-Standby Role      : Primary
+Mate Router Name         : brk-bak
+  Mate-Link Connect Via  : 10.10.10.12
+    Remote Port          : 8741
+    SSL                  : Yes
+ADB Link To Mate         : Up
+  Last Failure Reason    : Mate Link Restart
+  Last Failure Time      : Jul  9 2026 15:12:45 +08
+ADB Hello To Mate        : Up
+  Last Failure Reason    : N/A
+  Last Failure Time      :
+  Hello Interval (ms)    : 1000
+
+Interface        Static Address           Status
+---------------- ------------------------ ------
+intf0            10.10.10.11              Up
+
+                               Primary Virtual Router  Backup Virtual Router
+                               ----------------------  ----------------------
+Activity Status                Local Active            Shutdown
+Redundancy Interface Status    Up
+Message Spool Status           AD-Active
+
+
+#################################################################
+# CLI command: show redundancy group
+# Host:        brk-pri
+#################################################################
+
+Node Router-Name   Node Type       Address           Status
+-----------------  --------------  ----------------  ---------
+brk-pri*           Message-Router  10.10.10.11       Online
+brk-bak            Message-Router  10.10.10.12       Online
+brk-mon            Monitor         10.10.10.13       Online
+
+* - indicates the current node
+
+#################################################################
+# CLI command: show message-spool detail
+# Host:        brk-pri
+#################################################################
+
+
+Config Status:                            Enabled (Primary)
+Maximum Spool Usage:                      75000 MB
+Using Internal Disk:                      Yes
+
+Operational Status:                       AD-Active
+Datapath Status:                          Up
+Synchronization Status:                   Synced
+Spool-Sync Status:                        Synced
+Active Disk Partition Usage:              2.99%
+Mate Disk Partition Usage:                2.16%
+Defragmentation:
+  Status:                                 Idle
+  Schedule Enabled:                       Yes
+    Days:                                 Mon
+    Times:                                1:00
+  Threshold Enabled:                      No
+    Fragmentation:                        50%
+    Spool Usage:                          50%
+    Minimum Interval:                     15 minutes
+  Estimated Fragmentation:                0%
+  Estimated Recoverable Space:            0 MB
+  Last Result:
+    Completed On:                         Sep  7 2026 01:00:35 +08
+    Completion %:                         100%
+    Exit Condition:                       Success
+Number of delete in-progress:             0
+
+
+#################################################################
+# CLI command: show stats client detail
+# Host:        brk-pri
+#################################################################
+
+
+Total Clients:           8
+Total Clients Connected: 8
+         Non-Compressed: 8
+             Compressed: 0
+                    SSL: 4
+                Non-SSL: 4
+            Service SMF: 7
+  Service Web Transport: 1
+           Service REST: 0
+           Service MQTT: 0
+           Service AMQP: 0
+
+                                               Received                  Sent
+                                   --------------------  --------------------
+Total Client Messages                         106737577              72844912
+  Client Control Messages                      49591672              15122888
+    Login                                         54407                 54407
+      Denied Duplicate Clients                                              0
+      Denied Authorization Failed                                        2990
+      Denied Client Connect ACL                                             0
+      Denied Subscribe Topic ACL                                            0
+
+****************************** Ingress Discards *****************************
+
+Total Ingress Discards                                                      0
+  No Subscription Match                                                     0
+  Publish Topic ACL                                                         0
+
+****************************** Egress Discards ******************************
+
+Total Egress Discards                                                  466821
+  Transmit Congestion                                                  420849
+  Compression Congestion                                                    0
+  Client Not Connected                                                   5671
+  TTL Exceeded                                                              0
+  Message Spool Egress Discards                                         40301
+
+
+#################################################################
+# CLI command: show config-sync
+# Host:        brk-pri
+#################################################################
+
+
+Admin Status                      : Enabled
+Oper Status                       : Up
+SSL Enabled                       : Yes
+Client
+  Name                            : #config-sync/brk-pri
+  Connection State                : Connected
+  Last Fail Reason                :
+
+
+#################################################################
+# CLI command: show config-sync database detail
+# Host:        brk-pri
+#################################################################
+
+Router        : site
+Sync State    : In-Sync
+Role          : Leader
+Last Result   : ok
+
+Message-VPN   : APPVPN
+Sync State    : In-Sync
+Role          : Leader
+Last Result   : ok
+
+Message-VPN   : default
+Sync State    : In-Sync
+Role          : Leader
+Last Result   : ok
+
+
+#################################################################
+# CLI command: show replication stats
+# Host:        brk-pri
+#################################################################
+
+
+Replication Interface:
+Replication Mate:
+
+ConfigSync:
+  Bridge:
+    Admin State:                   Enabled
+    State:                         n/a
+
+
+#################################################################
+# CLI command: show message-spool stats
+# Host:        brk-pri
+#################################################################
+
+
+Message VPN:
+
+************** Ingress Spool Discard Statistics ***************************
+Spool Over Quota:                                              0
+Queue/Topic-Endpoint Over Quota:                               0
+
+*************** Egress Spool Discard Statistics ***************************
+Messages Deleted:                                              0
+Messages Expired To Discard:                               23399
+Messages Expired To DMQ:                                       0
+Max Redelivery Exceeded To Discard:                            0
+Max Redelivery Exceeded To DMQ:                                0
+TTL Exceeded To Discard:                                   16902
+
+
+#################################################################
+# CLI command: show ssl server-certificate detail
+# Host:        brk-pri
+#################################################################
+
+Filename:             broker-vip.example.test.pem
+Configured at:        Jul  9 2026 15:49:31 +08
+
+        Version: 3 (0x2)
+        Serial Number:
+            7f:22:09:01:64:db:14:43
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer:
+            C=SG
+            O=Example
+            CN=Servers CA2
+        Validity
+            Not Before: Feb  4 11:18:26 2026 GMT
+            Not After : May  9 11:18:25 2028 GMT
+        Subject:
+            C=SG
+            O=Example
+            CN=broker-vip.example.test
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Subject Alternative Name:
+                DNS:broker-vip.example.test, DNS:brk-pri.example.test, DNS:brk-bak.example.test, DNS:brk-mon.example.test, DNS:brk-pri, DNS:brk-bak, DNS:brk-mon, IP Address:10.10.10.11, IP Address:10.10.10.12, IP Address:10.10.10.13
+    Signature Algorithm: sha256WithRSAEncryption
+
+
+Chain depth:          1
+        Version: 3 (0x2)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer:
+            CN=Technical Root CA2
+        Validity
+            Not Before: Sep  4 21:24:27 2025 GMT
+            Not After : Aug 31 21:24:26 2040 GMT
+        Subject:
+            C=SG
+            O=Example
+            CN=Servers CA2
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:1
+
+
+#################################################################
+# CLI command: show client-certificate-authority ca-name * cert
+# Host:        brk-pri
+#################################################################
+
+
+#################################################################
+# CLI command: show domain-certificate-authority ca-name * cert
+# Host:        brk-pri
+#################################################################
+
+Certificate Authority:         ServersCA2
+Certificate Content:
+        Version: 3 (0x2)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer:
+            CN=Technical Root CA2
+        Validity
+            Not Before: Sep  4 21:24:27 2025 GMT
+            Not After : Aug 31 21:24:26 2040 GMT
+        Subject:
+            C=SG
+            O=Example
+            CN=Servers CA2
+
+
+Certificate Authority:         OldRootCA
+Certificate Content:
+        Version: 3 (0x2)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer:
+            CN=Old Root CA
+        Validity
+            Not Before: Jan  1 00:00:00 2015 GMT
+            Not After : Jan  1 00:00:00 2025 GMT
+        Subject:
+            CN=Old Root CA
+
+
+#################################################################
+# CLI command: show storage-element * detail
+# Host:        brk-pri
+#################################################################
+
+
+Storage Element          : root
+Last Refreshed           : Sep 07 2026 15:19:21
+Device:
+   Name                  : overlay (46)
+   Size                  :  39.4 Mi 1K-blocks
+   Used                  :   6.7 Mi 1K-blocks
+   Available             :  32.7 Mi 1K-blocks
+   Use %                 : 17%
+Element:
+   Used                  :   1.7 GB
+   Usage Threshold       :   1.5 GB
+
+Storage Element          : spool
+Last Refreshed           : Sep 07 2026 15:19:21
+Device:
+   Name                  : /dev/dm-9 (64777)
+   Size                  :  97.9 Mi 1K-blocks
+   Used                  :   7.8 Mi 1K-blocks
+   Available             :  90.1 Mi 1K-blocks
+   Use %                 : 8%
+Element:
+   Used                  : N/A
+   Usage Threshold       : N/A
+
+
+#################################################################
+# CLI command: show service
+# Host:        brk-pri
+#################################################################
+
+
+Msg-Backbone:       Enabled
+  VRF:              management
+
+Max Incoming Connections:       1000
+
+Flags Legend:
+TP - Transport
+S - SSL (Y=Yes, N=No, -=not-applicable)
+
+                                              Status
+Service    TP  S C R VRF   MsgVpn          Port  A O Failed Reason
+---------- --- ----- ----- --------------- ----- --- --------------------------
+SEMP       TCP N - - Mgmt                   8080 U U
+SEMP       TCP Y - - Mgmt                   1943 U U
+SMF        TCP N N N Mgmt                  55555 U U
+SMF        TCP N Y N Mgmt                  55003 U U
+SMF        TCP N N Y Mgmt                  55556 U D
+SMF        TCP Y N N Mgmt                  55443 U U
+SMF        WEB N - - Mgmt                   8008 U U
+SMF        WEB Y - - Mgmt                   1443 U U
+MQTT       TCP N - - Mgmt  default          1883 D D Disabled at Vpn
+AMQP       TCP Y - - Mgmt                        U D Not Permitted
+AMQP       TCP N - - MsgBB APPVPN           5672 D D Disabled at Vpn
+AMQP       TCP Y - - MsgBB APPVPN           5671 U U
+REST       WEB N - - Mgmt  APPVPN           9000 D D Disabled at Vpn
+REST       WEB Y - - Mgmt  APPVPN           9443 U U
+MATELINK   TCP Y N - Mgmt                   8741 U U
+HEALTHCHK  TCP N N - Mgmt                   5550 U U
+REDUNDANCY TCP Y N - Mgmt                   8300 U U
+
+#################################################################
+# CLI command: show memory
+# Host:        brk-pri
+#################################################################
+
+
+Memory (KB):
+
+                    Total        Used        Free     Buffers      Cached
+               ----------  ----------  ----------  ----------  ----------
+Physical
+  Memory         16137844    14376648     1761196     1097252     6457068
+
+Physical memory usage:  49.07%
+Subscription memory usage:  0.01%
+Subscriptions load factor:  1%
+
+NAB Buffers:
+
+Slot     NAB Buffer Load Factor
+-------- ----------------------
+1/1      37%
+
+#################################################################
+# CLI command: show log rest rest-delivery-point errors wide
+# Host:        brk-pri
+#################################################################
+
+Timestamp                 Message VPN              RDP                      REST Consumer            Local Address                                 Remote Address                                Error Response
+------------------------- ------------------------ ------------------------ ------------------------ --------------------------------------------- --------------------------------------------- ----------------------------------------------------------------------------------------------------
+2026-09-07T15:19:24+08:00 APPVPN                   AppSvcRDP                AppSvcVip                10.10.10.11:38614                             10.10.10.118:443                              400 Bad Request
+                                                                                                                                                                                                   {"error":{"root_cause":[{"type":"document_parsing_exception","reason":"failed"}]},"status":400}
+2026-09-07T15:19:23+08:00 APPVPN                   AppSvcRDP                AppSvcVip                10.10.10.11:46152                             10.10.10.118:443                              400 Bad Request
+                                                                                                                                                                                                   {"error":{"root_cause":[{"type":"parse_exception","reason":"request body is required"}]},"status":400}
+
+#################################################################
+# CLI command: show log no-subscription-match wide
+# Host:        brk-pri
+#################################################################
+
+
+Most recent no-subscription-match events:
+
+Timestamp                 Client                   Username                 Message VPN              Topic
+------------------------- ------------------------ ------------------------ ------------------------ ----------------------------------------
+
+#################################################################
+# CLI command: show log acl client-connect wide
+# Host:        brk-pri
+#################################################################
+
+
+Most recent client-connect denials:
+
+Timestamp                 Address                                       Client                   Username                 Message VPN              ACL profile
+------------------------- --------------------------------------------- ------------------------ ------------------------ ------------------------ ------------------------
+
+#################################################################
+# CLI command: show log acl publish-topic wide
+# Host:        brk-pri
+#################################################################
+
+
+Most recent publish-topic denials:
+
+Timestamp                 Client                   Username                 Message VPN              ACL profile              Topic
+------------------------- ------------------------ ------------------------ ------------------------ ------------------------ ----------------------------------------
+
+#################################################################
+# CLI command: show log acl subscribe-topic wide
+# Host:        brk-pri
+#################################################################
+
+
+Most recent subscribe-topic denials:
+
+Timestamp                 Client                   Username                 Message VPN              ACL profile              Topic
+------------------------- ------------------------ ------------------------ ------------------------ ------------------------ ----------------------------------------
+
+#################################################################
+# CLI command: show bridge *
+# Host:        brk-pri
+#################################################################
+
+
+Total # Bridges    :           2 of    50
+
+Flags Legend:
+A - Admin State (U=Up, D=Down, -=not-applicable)
+             Local       Remote      Remote          Status
+Name         MsgVpn      MsgVpn      Router        A E I O Q R   Uptime
+------------ ----------- ----------- ------------- ----------- --------------
+#bridge/v:br APPVPN      APPVPN      v:brk-remote1 - R - U - P  51d 9h 3m 41s
+  k-remote1/
+  APPVPN/1
+B.APP.TO.REM APPVPN      APPVPN      v:brk-remote1 U L U - U A  51d 9h 3m 44s
+
+#################################################################
+# CLI command: show message-vpn *
+# Host:        brk-pri
+#################################################################
+
+
+Management Message VPN:
+Message-VPN                      Local       # Unique Subscriptions  # Local
+                                 Status      Local   Remote    Total   Conns
+-------------------------------- -------- -------- -------- -------- -------
+#config-sync                     Up             27        0       27       3
+APPVPN                           Up             13        0       13       4
+default                          Down           12        0       12       0
+
+
+#################################################################
+# CLI command: show message-vpn * replication
+# Host:        brk-pri
+#################################################################
+
+
+Flags Legend:
+A - Admin State (U=Up, D=Down, -=N/A)
+
+Message VPN                      A C B R Q S M T
+-------------------------------- - - - - - - - -
+#config-sync                     - - - - - - - -
+APPVPN                           D S - - - - N A
+default                          D S - - - - N A
+
+
+#################################################################
+# CLI command: show message-vpn #config-sync detail
+# Host:        brk-pri
+#################################################################
+
+
+Message VPN:                         #config-sync
+Configuration Status:                Enabled
+Local Status:                        Up
+SSL to plain text downgrade allowed: No
+Active Incoming Connections:         3
+  Service SMF:                       3
+
+
+#################################################################
+# CLI command: show debug dns
+# Host:        brk-pri
+#################################################################
+
+ares version: 1.27.0
+server: "10.10.10.84"
+  TCP port: 53
+server: "10.10.10.86"
+  TCP port: 53
+
+#################################################################
+# CLI command: show debug ad-show-alarms
+# Host:        brk-pri
+#################################################################
+
+Alarm                                              Information
+-------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------
+adb/thread/stall                                   alarm(OFF) count(0) lastTime(0 sec) thread() duration(0 sec)
+egress/thread/stall                                alarm(OFF) count(0) lastTime(56 year) thread() duration(0 sec)
+
+#################################################################
+# CLI command: show web-manager
+# Host:        brk-pri
+#################################################################
+
+Allow Unencrypted Wizards      :         No
+Redirect Manager Config Status :         Enabled
+Redirect Manager Oper Status   :         Up
+Redirect Manager SSL Port      :         0 (= Use Configured SSL Port)
+
+#################################################################
+# CLI command: show interface intf0
+# Host:        brk-pri
+#################################################################
+
+Interface: intf0
+  OS Physical Interface: ens192
+  IP address: 10.10.10.11/28
+  MAC address: 00:50:56:90:a6:a1
+  Enabled: yes
+  Operational State: Up
+  Last Failure Reason: N/A
+  Link detected: yes
+  Media type: N/A
+

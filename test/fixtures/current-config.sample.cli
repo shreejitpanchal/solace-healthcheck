@@ -1,0 +1,114 @@
+! Router: "brk-pri"
+! Configuration Version: 10.25.0.148
+!
+! Create Username: "ops-admin"
+!
+create username "ops-admin" global-access-level admin
+create username "ops-ro" global-access-level read-only
+!
+authentication
+  user-class cli
+    auth-type ldap
+    ldap-profile "corp-ldap"
+    exit
+  exit
+!
+! Create LDAP Profile: "corp-ldap"
+!
+create ldap-profile "corp-ldap"
+ldap-profile "corp-ldap"
+  admin dn "cn=svc-solace,dc=example,dc=test"
+  admin password "S3cretValue!"
+  search base-dn "dc=example,dc=test"
+  ldap-server index 1 "ldaps://ldap1.example.test"
+  ldap-server index 2 "ldaps://ldap2.example.test"
+  starttls
+  no shutdown
+  exit
+!
+! Create Message Vpn: "APPVPN"
+!
+create message-vpn "APPVPN"
+message-vpn "APPVPN"
+  max-connections 1000
+  max-subscriptions 500000
+  message-spool
+    max-spool-usage 60000
+    exit
+  authentication
+    basic
+      auth-type internal
+      exit
+    client-certificate
+      shutdown
+      exit
+    oauth
+      shutdown
+      exit
+    exit
+  service
+    smf
+      listen-port 55555
+      exit
+    exit
+  no shutdown
+  exit
+!
+! Enable Message Vpn: "default"
+!
+message-vpn "default"
+  shutdown
+  exit
+!
+! Create Client Username: "app-pub"
+!
+create client-username "app-pub" message-vpn "APPVPN"
+client-username "app-pub" message-vpn "APPVPN"
+  client-profile "app-profile"
+  acl-profile "app-acl"
+  no shutdown
+  exit
+!
+! Create Client Username: "default"
+!
+client-username "default" message-vpn "APPVPN"
+  shutdown
+  exit
+client-username "default" message-vpn "default"
+  shutdown
+  exit
+!
+create client-profile "app-profile" message-vpn "APPVPN"
+client-profile "app-profile" message-vpn "APPVPN"
+  no ssl allow-downgrade-to-plain-text
+  message-spool allow-guaranteed-message-send
+  message-spool allow-guaranteed-message-receive
+  exit
+!
+create acl-profile "app-acl" message-vpn "APPVPN"
+acl-profile "app-acl" message-vpn "APPVPN"
+  client-connect default-action disallow
+  publish-topic default-action disallow
+  subscribe-topic default-action disallow
+  exit
+!
+message-spool message-vpn "APPVPN"
+  create queue "Q.APP.IN"
+  queue "Q.APP.IN"
+    access-type exclusive
+    owner "app-pub"
+    permission all consume
+    subscription topic "app/in/>"
+    subscription topic "app/events/*"
+    no shutdown
+    exit
+  exit
+!
+create syslog "central"
+syslog "central"
+  host "10.10.10.50" transport tcp port 514
+  facility event
+  facility system
+  exit
+!
+! END
